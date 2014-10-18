@@ -80,4 +80,11 @@ describe 'Get all the players' do
   it 'has the right number of players' do
     players_found.size.must_equal player.size
   end
+  it 'has all team data' do
+    player.each_index do | player_array |
+      player[player_array].map  do | key, value |
+        players_found[player_array][key].must_equal value
+      end
+    end
+  end
 end
