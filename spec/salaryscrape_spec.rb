@@ -13,17 +13,18 @@ all_teams = ['PHO','MIA','ATL','BOS','BRK','CHI','CLE','DAL',
 			'DEN','GSW','DET','LAL','LAC','HOU','IND','MIN',
 			'MEM','MIL','NOP','NYK','OKC','SAC','WAS','UTA',
 			'SAS','TOR','PHI','POR','ORL','CHO']
-heads_of_tables = ['Player', '2014-15', '2015-16', '2016-17',
-				   '2017-18', '2018-19', 'Signed Using', 'Guaranteed']
+heads_of_tables = ["Player", "2014-15", "2015-16", "2016-17",
+				   "2017-18", "2018-19", "Signed Using", "Guaranteed"]
 #data that have to be compared with the expected one
 heads = []
-players = []
+players_data = []
 array_of_hashes = []
+players = SalaryScraper::BasketballReference.new
 
 all_teams.each do |team|
-	heads << SalaryScraper::BasketballReference.head_array(team)
-	players << SalaryScraper::BasketballReference.players_data_array(team)
-	array_of_hashes << SalaryScraper::BasketballReference.to_array_of_hashes(team)
+	heads << players.head_array(team)
+	players_data << players.players_data_array(team)
+	array_of_hashes << players.to_array_of_hashes(team)
 end
 
 #tests start
@@ -33,14 +34,16 @@ describe "Get the head of the tables", "For all the teams" do
 			head_for_a_team.size.must_equal heads_of_tables.size
 		end
 
-		it "has the right values" do
-			head_for_a_team.must_be_same_as heads_of_tables
+		head_for_a_team.each_index do |i|  
+			it "has the right values" do
+				head_for_a_team[i].must_equal heads_of_tables[i]
+			end
 		end
 	end
 end
 
 describe "Get players data" do
-	players.each do |players_for_a_team|
+	players_data.each do |players_for_a_team|
 		it "is not empty" do
 			players_for_a_team.wont_be_empty
 		end
@@ -52,14 +55,14 @@ describe "Get players data" do
 
 end
 
+
 describe "Get the array of hashes" do
 	array_of_hashes.each do |array_of_hashes_of_each_team|
 		it "has the right size" do
-			array_of_hashes_of_each_team.get_number_arrays.must_equal 16
+			array_of_hashes_of_each_team.size.must_be :>, 14
 		end
 	end
 end
-
 
 
 
