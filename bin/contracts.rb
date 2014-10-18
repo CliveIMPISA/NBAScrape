@@ -8,8 +8,9 @@ include SalaryScraper
 
 code = BasketballReference.new
 
-if(code.check_if_team_exist(team_name))
-	puts code.to_yaml(team_name) 
-else 
-	print "This team does not exist.\nPlease check the readme file for team names abbreviation.\n"
+if code.check_if_team_exist(team_name)
+  puts code.to_yaml(team_name)
+else
+  puts 'This team does not exist.'
+  puts 'Please check the readme file for team names abbreviation.'
 end

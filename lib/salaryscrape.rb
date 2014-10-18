@@ -28,7 +28,7 @@ module SalaryScraper
       doc = get_page(team)
       doc.xpath(HEAD)
     end
-    
+
     def head_array(team)
       @head_array = []
       head = get_column_heads(team)
@@ -44,7 +44,9 @@ module SalaryScraper
     end
 
     def to_array_of_hashes(team)
-      assign_key_to_value(get_number_arrays, players_data_array(team), head_array(team))
+      players_array = players_data_array(team)
+      header_array = head_array(team)
+      assign_key_to_value(number_arrays, players_array, header_array)
     end
 
     def assign_key_to_value(number_arrays, players_data_array, head_array)
@@ -60,7 +62,7 @@ module SalaryScraper
       data
     end
 
-    def get_number_arrays
+    def number_arrays
       @players_data_array.size / @head_array.size
     end
 
@@ -70,9 +72,9 @@ module SalaryScraper
     end
 
     def check_if_team_exist(team)
-      if (head_array(team).size == 0 || players_data_array(team).size == 0)
+      if head_array(team).size == 0 || players_data_array(team).size == 0
         return false
-      else 
+      else
         return true
       end
     end
