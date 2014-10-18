@@ -64,8 +64,8 @@ module SalaryScraper
       @players_data_array.size / @head_array.size
     end
 
-    def to_yaml(team_name)
-      data = to_array_of_hashes(team_name)
+    def to_yaml(team)
+      data = to_array_of_hashes(team)
       data.to_yaml
     end
 
