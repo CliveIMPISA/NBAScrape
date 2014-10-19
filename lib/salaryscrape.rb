@@ -8,6 +8,11 @@ module SalaryScraper
     WEBSITE = 'http://www.basketball-reference.com/contracts'
     PAYROLL = "//div[@id='div_payroll']//tbody//tr[@class='']//td"
     HEAD = "//div[@id='div_payroll']//thead//tr[@class='']//th"
+    ALL_TEAMS = Array['PHO', 'MIA', 'ATL', 'BOS', 'BRK', 'CHI',
+                      'CLE', 'DAL', 'DEN', 'GSW', 'DET', 'LAL',
+                      'LAC', 'HOU', 'IND', 'MIN', 'MEM', 'MIL',
+                      'NOP', 'NYK', 'OKC', 'SAC', 'WAS', 'UTA',
+                      'SAS', 'TOR', 'PHI', 'POR', 'ORL', 'CHO']
     def get_team(team)
       doc = get_page(team)
       doc.xpath(PAYROLL)
@@ -72,10 +77,10 @@ module SalaryScraper
     end
 
     def check_if_team_exist(team)
-      if head_array(team).size == 0 || players_data_array(team).size == 0
-        return false
-      else
+      if ALL_TEAMS.include?(team)
         return true
+      else
+        return false
       end
     end
   end
