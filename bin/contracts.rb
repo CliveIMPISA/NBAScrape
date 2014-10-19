@@ -3,7 +3,7 @@ fail ArgumentError, "Usage: ruby contracts.rb [teamname]\n
 Please check the readme file for team names abbreviation\n" if ARGV.count == 0
 
 team_name = ARGV[0]
-require_relative 'salaryscrape'
+require_relative '../lib/salaryscrape.rb'
 include SalaryScraper
 
 code = BasketballReference.new
