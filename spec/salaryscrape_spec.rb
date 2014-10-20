@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require './lib/salaryscrape.rb'
+require '../lib/salaryscrape.rb'
 
 
 #tests the head of the tables for all the teams
@@ -88,8 +88,9 @@ heads = []
 players_data = []
 array_of_hashes = []
 players = SalaryScraper::BasketballReference.new
+players_found = players.to_array_of_hashes('PHO')
 
-all_teams.each do |team|
+SalaryScraper::BasketballReference::ALL_TEAMS.each do |team|
   heads << players.head_array(team)
   players_data << players.players_data_array(team)
   array_of_hashes << players.to_array_of_hashes(team)
