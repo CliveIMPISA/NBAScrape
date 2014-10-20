@@ -8,7 +8,11 @@ module SalaryScraper
     WEBSITE = 'http://www.basketball-reference.com/contracts'
     PAYROLL = "//div[@id='div_payroll']//tbody//tr[@class='']//td"
     HEAD = "//div[@id='div_payroll']//thead//tr[@class='']//th"
-
+    ALL_TEAMS = Array['PHO', 'MIA', 'ATL', 'BOS', 'BRK', 'CHI',
+                      'CLE', 'DAL', 'DEN', 'GSW', 'DET', 'LAL',
+                      'LAC', 'HOU', 'IND', 'MIN', 'MEM', 'MIL',
+                      'NOP', 'NYK', 'OKC', 'SAC', 'WAS', 'UTA',
+                      'SAS', 'TOR', 'PHI', 'POR', 'ORL', 'CHO']
     def get_team(team)
       doc = get_page(team)
       doc.xpath(PAYROLL)
@@ -30,17 +34,24 @@ module SalaryScraper
       doc.xpath(HEAD)
     end
 
-    def to_array_of_hashes(team)
-      players_data_array = []
-      head_array = []
-
-      players_data = get_team(team)
+    def head_array(team)
+      @head_array = []
       head = get_column_heads(team)
+      head.each { |x| @head_array << x.text }
+      @head_array
+    end
 
-      players_data.each { |x| players_data_array << x.text }
-      head.each { |x| head_array << x.text }
-      number_arrays = get_number_arrays(players_data_array, head_array)
-      assign_key_to_value(number_arrays, players_data_array, head_array)
+    def players_data_array(team)
+      @players_data_array = []
+      players_data = get_team(team)
+      players_data.each { |x| @players_data_array << x.text }
+      @players_data_array
+    end
+
+    def to_array_of_hashes(team)
+      players_array = players_data_array(team)
+      header_array = head_array(team)
+      assign_key_to_value(number_arrays, players_array, header_array)
     end
 
     def assign_key_to_value(number_arrays, players_data_array, head_array)
@@ -56,13 +67,21 @@ module SalaryScraper
       data
     end
 
-    def get_number_arrays(val1, val2)
-      val1.size / val2.size
+    def number_arrays
+      @players_data_array.size / @head_array.size
     end
 
-    def to_yaml(team_name)
-      data = to_array_of_hashes(team_name)
+    def to_yaml(team)
+      data = to_array_of_hashes(team)
       data.to_yaml
+    end
+
+    def check_if_team_exist(team)
+      if ALL_TEAMS.include?(team)
+        return true
+      else
+        return false
+      end
     end
   end
 end
