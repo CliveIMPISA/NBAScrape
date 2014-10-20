@@ -8,7 +8,7 @@ module SalaryScraper
     WEBSITE = 'http://www.basketball-reference.com/contracts'
     PAYROLL = "//div[@id='div_payroll']//tbody//tr[@class='']//td"
     HEAD = "//div[@id='div_payroll']//thead//tr[@class='']//th"
-
+    
     def get_team(team)
       doc = get_page(team)
       doc.xpath(PAYROLL)
