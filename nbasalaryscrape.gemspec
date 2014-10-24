@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.date        =  Date.today.to_s
   gem.summary     =  'NBA Player Salary extractor'
   gem.description =  'Extract Player Salary from Basketball-Reference.com'
-  gem.authors     =  ['Clive Augstin','Amon Bazongo','Jevon McKenzie']
+  gem.authors     =  ['Clive Augstin, Amon Bazongo, Jevon McKenzie']
   gem.email       =  'augustinclive@hotmail.com'
   gem.files       =  `git ls-files`.split("\n")
   gem.test_files  =  `git ls-files -- {test,spec,features}/*`.split("\n")
