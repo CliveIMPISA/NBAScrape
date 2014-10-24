@@ -18,9 +18,9 @@ Type nbasalaryscrape and provide one of the team abbreviations. Below is a list 
 ````ruby
 $ nbasalaryscrape PHO
 ````
-To store the content in a yaml, just redirect the output
+To store the content in a yaml, just add a second argument as a output
 ````ruby
-$ nbasalaryscrape BOS > your_yaml_file.yml
+$ nbasalaryscrape BOS  your_yaml_file.yml
 ````
 ###Call from ruby code
 
