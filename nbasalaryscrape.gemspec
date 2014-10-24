@@ -1,5 +1,5 @@
 $:.push File.expand_path("../lib", __FILE__)
-require 'citesight/version'
+require 'nbasalaryscrape/version'
 
 Gem::Specification.new do |gem|
   gem.name        =  'nbasalaryscrape'
