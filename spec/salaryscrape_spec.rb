@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require_relative '../lib/nbasalarayscrape/salaryscrape.rb'
 
 # tests the head of the tables for all the teams
 # tests that the player's value is not empty for all the teams
@@ -57,10 +58,6 @@ player = [{ 'Player' => 'Eric Bledsoe', '2014-15' => '$12,173,913',
             '2015-16' => '$1,662,360', '2016-17' => '$1,733,880',
             '2017-18' => '$2,666,707', '2018-19' => '',
             'Signed Using' => '1st Round Pick', 'Guaranteed' => '$3,253,080' },
-          { 'Player' => 'Earl Barron', '2014-15' => '$1,310,286',
-            '2015-16' => '', '2016-17' => '', '2017-18' => '',
-            '2018-19' => '', 'Signed Using' => 'Minimum Salary',
-            'Guaranteed' => '' },
           { 'Player' => 'Shavlik Randolph', '2014-15' => '$1,227,985',
             '2015-16' => '', '2016-17' => '', '2017-18' => '', '2018-19' => '',
             'Signed Using' => 'Minimum Salary', 'Guaranteed' => '' },
@@ -73,6 +70,10 @@ player = [{ 'Player' => 'Eric Bledsoe', '2014-15' => '$12,173,913',
             '2017-18' => '', '2018-19' => '',
             'Signed Using' => '1st Round Pick',
             'Guaranteed' => '$1,112,280' },
+          { 'Player' => 'Earl Barron', '2014-15' => '$1,310,286',
+            '2015-16' => '', '2016-17' => '', '2017-18' => '',
+            '2018-19' => '', 'Signed Using' => 'Minimum Salary',
+            'Guaranteed' => '' },
           { 'Player' => 'Josh Childress', '2014-15' => '$7,610,000',
             '2015-16' => '', '2016-17' => '', '2017-18' => '', '2018-19' => '',
             'Signed Using' => '', 'Guaranteed' => '' },
