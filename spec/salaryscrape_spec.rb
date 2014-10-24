@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '../lib/nbasalarayscrape/salaryscrape.rb'
+require_relative '../lib/nbasalaryscrape.rb'
 
 # tests the head of the tables for all the teams
 # tests that the player's value is not empty for all the teams
