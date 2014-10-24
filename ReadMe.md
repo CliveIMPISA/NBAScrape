@@ -1,6 +1,9 @@
 nbasalaryscrape
 ===============
 
+[![Build Status](https://travis-ci.org/CliveIMPISA/nbasalaryscrape.svg?branch=master)](https://travis-ci.org/CliveIMPISA/nbasalaryscrape)
+
+
 nbasalaryscrape grabs the salary and contract information of National Basketball Association(NBA) players from [basketball-reference.com](http://www.basketball-reference.com). This information is then written to yaml file. Included in this project is a sample of a generated yaml file of one of the teams salary information
 ## About
 
