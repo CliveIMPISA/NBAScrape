@@ -1,0 +1,25 @@
+PATH
+  remote: .
+  specs:
+    nbasalaryscrape (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    mini_portile (0.6.0)
+    minitest (5.4.2)
+    minitest-rg (5.1.0)
+      minitest (~> 5.0)
+    nokogiri (1.6.3.1)
+      mini_portile (= 0.6.0)
+    rake (10.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest
+  minitest-rg
+  nbasalaryscrape!
+  nokogiri
+  rake
