@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 require_relative '../lib/nbasalaryscrape/salaryscrape.rb'
 
-#fail ArgumentError, "Usage: nbasalaryscrape [teamname] [filename (optional)]\n
-#Please check the readme file for team names abbreviation\n" if ARGV.count == 0
+# fail ArgumentError, "Usage: nbasalaryscrape [teamname] [filename (optional)]\n
+# Please check the readme file for team names abbreviation\n" if ARGV.count == 0
 
 team_name = ARGV[0]
 file_name = ARGV[1]
@@ -12,22 +12,22 @@ include SalaryScraper
 code = BasketballReference.new
 
 if ARGV.count != 0
-if code.check_if_team_exist(team_name)
-  puts code.to_array_of_hashes(team_name) if ARGV.count == 1
+  if code.check_if_team_exist(team_name)
+    puts code.to_array_of_hashes(team_name) if ARGV.count == 1
 
-  if ARGV.count == 2
-    File.open(file_name, 'w') do |file|
-      file.puts code.to_yaml(team_name)
+    if ARGV.count == 2
+      File.open(file_name, 'w') do |file|
+        file.puts code.to_yaml(team_name)
+      end
     end
+  else
+    puts 'This team does not exist.'
+    puts "Please check the readme file for team names abbreviation\n
+or use one of the abbreviations below."
+    puts BasketballReference::ALL_TEAMS
   end
 else
-  puts 'This team does not exist.'
-  puts "Please check the readme file for team names abbreviation\n
-or use one of the abbreviations below."
-  puts BasketballReference::ALL_TEAMS
-end
-else
-  puts "Usage: nbasalaryscrape [teamname] [filename (optional)]"
-  puts "Please check the readme file for team names abbreviation"
+  puts 'Usage: nbasalaryscrape [teamname] [filename (optional)]'
+  puts 'Please check the readme file for team names abbreviation'
 
 end

@@ -16,11 +16,11 @@ This gem may be used as a command line utility or called from code
 
 Type nbasalaryscrape and provide one of the team abbreviations. Below is a list of the thirty teams and their abbreviations.
 ````ruby
-$ nbasalaryscrape PHO
+% nbasalaryscrape PHO
 ````
 To store the content in a yaml, just add a second argument as a output
 ````ruby
-$ nbasalaryscrape BOS  your_yaml_file.yml
+% nbasalaryscrape BOS  your_yaml_file.yml
 ````
 ###Call from ruby code
 
