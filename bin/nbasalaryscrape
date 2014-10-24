@@ -1,17 +1,24 @@
 #!/usr/bin/env ruby
-require_relative '../lib/nbasalaryscrape'
+require_relative '../lib/nbasalaryscrape.rb'
 
 fail ArgumentError, "Usage: ruby contracts.rb [teamname]\n
 Please check the readme file for team names abbreviation\n" if ARGV.count == 0
 
 team_name = ARGV[0]
+file_name = ARGV[1]
 
 include SalaryScraper
 
 code = BasketballReference.new
 
 if code.check_if_team_exist(team_name)
-  puts code.to_yaml(team_name)
+  puts code.to_array_of_hashes(team_name) if ARGV.count == 1
+
+  if ARGV.count == 2
+    File.open(file_name, 'w') do |file|
+      file.puts code.to_yaml(team_name)
+    end
+  end
 else
   puts 'This team does not exist.'
   puts "Please check the readme file for team names abbreviation\n
