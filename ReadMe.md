@@ -27,10 +27,10 @@ To store the content in a yaml, just add a second argument as a output
 ````ruby
   require 'nbasalaryscrape'
 
-  team = BasketballReference.new
+  team = SalaryScraper::BasketballReference.new
 
-  puts team.to_array_of_hashes(PHO) #return players' data in an array of hashes
-  puts team.to_yaml(PHO) #return the same data in a yaml format
+  puts team.to_array_of_hashes('PHO') #return players' data in an array of hashes
+  puts team.to_yaml('PHO') #return the same data in a yaml format
 ````
 
 ##Abbreviations
