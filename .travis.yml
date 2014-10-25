@@ -8,5 +8,5 @@ rvm:
 
 branches:
   only:
-    - master
+    - amonmoce
     - /^release-.*$/
