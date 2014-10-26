@@ -14,6 +14,6 @@ Gem::Specification.new do |gem|
   gem.email       =  'augustinclive@hotmail.com'
   gem.files       =  `git ls-files`.split("\n")
   gem.test_files  =  `git ls-files -- {test,spec,features}/*`.split("\n")
-  gem.homepage    =  'https://github.com/soumyaray/citesight'
+  gem.homepage    =  'https://github.com/CliveIMPISA/nbasalaryscrape'
   gem.license     =  'MIT'
 end
